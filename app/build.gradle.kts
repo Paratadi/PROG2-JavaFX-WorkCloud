@@ -5,9 +5,10 @@
  * For more details on building Java & JVM projects, please refer to https://docs.gradle.org/8.12.1/userguide/building_java_projects.html in the Gradle documentation.
  */
 
-plugins {
-    // Apply the application plugin to add support for building a CLI application in Java.
+plugins  {
     application
+    // Adding JavaFX support and dependencies
+    id("org.openjfx.javafxplugin") version "0.1.0" 
 }
 
 repositories {
@@ -32,6 +33,8 @@ java {
     }
 }
 
+
+
 application {
     // Define the main class for the application.
     mainClass = "ch.zhaw.it.prog2.wordcloud.App"
@@ -40,4 +43,9 @@ application {
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+javafx {
+    version = "21.0.6"
+    modules("javafx.controls", "javafx.fxml")
 }
